@@ -2,6 +2,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const Container = (props: Props) => {
-  return <div className="px-4 py-3">{props.children}</div>;
+export const Container = ({ children }: Props) => {
+  return <div className="px-4 py-3">{children}</div>;
 };
