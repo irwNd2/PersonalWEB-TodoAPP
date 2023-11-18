@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import DarkModeToggle from "./dark-mode-toggle";
 
 type Menu = {
   label: string;
@@ -31,7 +32,7 @@ export const Header = () => {
     { label: "Register", url: "/register" },
   ];
   return (
-    <div className="flex font-lato justify-between bg-slate-700 font-bold text-lg relative top-0 px-6 py-5">
+    <div className="flex font-lato justify-between dark:bg-slate-700 bg-yellow-500 font-bold text-lg relative top-0 px-6 py-5">
       <div className="flex gap-4 text-gray-400">
         {leftMenu.map((el: Menu): React.ReactNode => {
           return (
@@ -41,6 +42,7 @@ export const Header = () => {
             </Link>
           );
         })}
+        <DarkModeToggle />
       </div>
       <div className="flex gap-4 text-gray-400">
         {rightMenu.map((el: Menu): React.ReactNode => {
