@@ -32,8 +32,8 @@ export const Header = () => {
     { label: "Register", url: "/register" },
   ];
   return (
-    <div className="flex font-lato justify-between dark:bg-slate-700 bg-yellow-500 font-bold text-lg relative top-0 px-6 py-5">
-      <div className="flex gap-4 text-gray-400">
+    <div className="flex font-lato justify-between dark:bg-darkPeach bg-peach font-bold text-lg relative top-0 px-6 py-5">
+      <div className="flex gap-4 dark:text-gray-400 text-gray-700">
         {leftMenu.map((el: Menu): React.ReactNode => {
           return (
             <Link href={el.url} key={el.url} className={`hover:text-orange-200 relative group ${getClassText(el.url)}`}>
@@ -44,7 +44,7 @@ export const Header = () => {
         })}
         <DarkModeToggle />
       </div>
-      <div className="flex gap-4 text-gray-400">
+      <div className="flex gap-4 dark:text-gray-400 text-gray-700">
         {rightMenu.map((el: Menu): React.ReactNode => {
           return (
             <Link href={el.url} key={el.url} className={`hover:text-orange-200 relative group ${getClassText(el.url)}`}>

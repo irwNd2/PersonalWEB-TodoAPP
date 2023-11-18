@@ -12,6 +12,11 @@ const config: Config = {
       fontFamily: {
         lato: ["Lato", "sans-serif"],
       },
+      colors: {
+        peach: "#E19898",
+        darkPeach: "#3F1D38",
+        darkPurple: "#4D3C77",
+      },
     },
   },
   plugins: [],

@@ -15,11 +15,8 @@ export default function DarkModeToggle() {
   };
 
   useEffect(() => {
-    if (theme === "light") {
-      setCheck(false);
-    } else {
-      setCheck(true);
-    }
+    if (theme === "light") setCheck(false);
+    else setCheck(true);
   }, [theme]);
 
   return (
