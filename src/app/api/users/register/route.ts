@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/utils/mongodb";
 import UserModel from "@/lib/models/user.model";
-import { NextApiRequest, NextApiResponse } from "next";
 import getErrorMessage from "@/lib/errorHandler";
+import { NextResponse } from "next/server";
 
 type CreateUserBody = {
   email: string;
@@ -9,18 +9,24 @@ type CreateUserBody = {
   name: string;
 };
 
-export const POST = async (req: NextApiRequest, res: NextApiResponse) => {
+export const POST = async (req: any) => {
   await dbConnect();
   try {
-    console.log(req.body);
-    const { email, password, name } = req.body as CreateUserBody;
-    new UserModel({
+    const body = await req.json();
+    const { email, password, name } = body as CreateUserBody;
+    const existedUser = await UserModel.findOne({ email });
+    if (existedUser) {
+      return new NextResponse("User already registered. Please Login", { status: 400 });
+    }
+    const newuser = new UserModel({
       email,
       password,
       name,
     });
-    res.status(201).json({ message: "You are registered successfully" });
+    await newuser.save();
+    return new NextResponse("Your account is registerd successfully", { status: 201 });
   } catch (error) {
-    res.status(500).json({ message: "ISE" });
+    // res.status(500).json({ message: "ISE" });
+    return new NextResponse("Internal server error", { status: 500 });
   }
 };
